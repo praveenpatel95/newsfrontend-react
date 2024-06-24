@@ -59,10 +59,10 @@ function Searchbar({page}) {
     });
 
     useEffect(() => {
-        if(page && values?.source){
+        if(page && values?.source && values?.keyword){
             searchArticles();
         }
-    }, [page, values?.source]);
+    }, [page]);
 
     return (
         <>
