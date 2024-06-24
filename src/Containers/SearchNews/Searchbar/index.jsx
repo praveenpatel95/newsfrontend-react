@@ -12,7 +12,7 @@ import * as Yup from 'yup';
 import {useNavigate} from "react-router";
 import CustomDatePicker from "../../../Components/CustomDatePicker";
 import React, {useEffect, useState} from "react";
-import { categories } from '../../../constant/newsApiConstant';
+import { categories, sources } from '../../../constant/newsApiConstant';
 import {getNewsAPIArticles} from "../../../stores/NewsApi/actions";
 import {useDispatch} from "react-redux";
 
@@ -108,9 +108,9 @@ function Searchbar({page}) {
                                         value={values.source}
                                         onChange={(e) => setValues({...values, source: e.target.value})}
                                     >
-                                        <MenuItem value='newsapi'>News API</MenuItem>
-                                        <MenuItem value='theguardian'>The Guardian</MenuItem>
-                                        <MenuItem value='nyt'>New York Times</MenuItem>
+                                        {sources?.map((source) => (
+                                            <MenuItem value={source.key}>{source.value}</MenuItem>
+                                        ))}
                                     </Select>
                                 </FormControl>
                                 {touched?.source && errors?.source ? (
