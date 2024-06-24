@@ -10,14 +10,14 @@
 Clone the repository:
 
 ```
-git clone https://github.com/praveenpatel95/NewsBackDesign.git
+git clone https://github.com/praveenpatel95/newsfrontend-react.git
 
 
 ```
 
 Then cd into the folder with this command:
 ```
-cd NewsBackDesign
+cd newsfrontend-react
 ```
 
 Install node modules with below command:
@@ -26,7 +26,7 @@ npm install
 ```
 
 ## Usage
-In the project open .env file and update the `REACT_APP_API_BASE_URL`
+Open .env file and update the `REACT_APP_API_BASE_URL`
 <br> With your frontend API url.
 
 In the project directory, you can run:
@@ -53,7 +53,7 @@ Redux saga is managed in the `stores` folder, where you can see all the constant
 
 `utils`: In the `utils` folder one js file for managing all API  and handling the response. That is called by Saga.
 
-`styles`: I modify and write some custom CSS in the `styles` folder.
+`styles`: common style files.
 
 `routes`: All routes is managed in `routes` folder.
 
