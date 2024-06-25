@@ -27,11 +27,10 @@ function Searchbar({page}) {
         let url = `source=${encodeURIComponent(values?.source)}&keyword=${encodeURIComponent(values?.keyword)}&category=${encodeURIComponent(values?.category ?? '')}&pageSize=${pageSize}&page=${page}`;
         if (values?.dateFrom && values?.dateTo) {
             let date1 = new Date(values.dateFrom)
-            let dateFrom = date1.getDate() + '-' + (date1.getMonth() + 1) + '-' + date1.getFullYear()
+            let dateFrom = date1.getFullYear() + '-' + (date1.getMonth() + 1) + '-' + date1.getDate()
 
             let date2 = new Date(values.dateTo)
-            let dateTo = date2.getDate() + '-' + (date2.getMonth() + 1) + '-' + date2.getFullYear()
-
+            let dateTo = date2.getFullYear() + '-' + (date2.getMonth() + 1) + '-' + date2.getDate()
             url += `&fromDate=${dateFrom}&toDate=${dateTo}`;
         }
         dispatch(getNewsAPIArticles(url));
@@ -109,7 +108,7 @@ function Searchbar({page}) {
                                         onChange={(e) => setValues({...values, source: e.target.value})}
                                     >
                                         {sources?.map((source) => (
-                                            <MenuItem value={source.key}>{source.value}</MenuItem>
+                                            <MenuItem value={source.key} key={source.key}>{source.value}</MenuItem>
                                         ))}
                                     </Select>
                                 </FormControl>
@@ -148,7 +147,7 @@ function Searchbar({page}) {
                                         onChange={(e) => setValues({...values, category: e.target.value})}
                                     >
                                         {categories?.map((category) => (
-                                            <MenuItem value={category}>{category}</MenuItem>
+                                            <MenuItem value={category} key={category}>{category}</MenuItem>
                                         ))}
                                     </Select>
                                 </FormControl>

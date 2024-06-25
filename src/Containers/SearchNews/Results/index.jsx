@@ -36,7 +36,7 @@ function Results({page, setPage}) {
 
                                     ))}
                                     <Box mt={3}>
-                                        <Pagination count="5" page={page} color="primary"
+                                        <Pagination count={5} page={page} color="primary"
                                                     onChange={handleChangePage}/>
                                     </Box>
                                 < /Grid>

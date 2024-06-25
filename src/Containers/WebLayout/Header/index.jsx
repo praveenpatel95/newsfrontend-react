@@ -11,22 +11,20 @@ import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import {createTheme, ThemeProvider} from "@mui/material";
-import {Link} from "react-router-dom";
-import './style.scss'
-import {useDispatch, useSelector} from "react-redux";
-import {logout} from "../../../stores/Auth/actions";
-import {useNavigate} from "react-router";
+import { createTheme, ThemeProvider } from "@mui/material";
+import { Link } from "react-router-dom";
+import './style.scss';
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../../stores/Auth/actions";
+import { useNavigate } from "react-router";
 
 const settings = [
-    {'name' : 'Profile', 'route' : '/account/profile'},
-    {'name' : 'News Preference', 'route' : '/account/newsfeed'},
+    { 'name': 'Profile', 'route': '/account/profile' },
+    { 'name': 'News Preference', 'route': '/account/newsfeed' },
 ];
 
 function Header() {
-    const {
-        isAuthenticated
-    } = useSelector(state => state?.AuthReducer);
+    const { isAuthenticated } = useSelector(state => state?.AuthReducer);
 
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -59,8 +57,7 @@ function Header() {
     const navigate = useNavigate();
     const callLogout = () => {
         dispatch(logout());
-        navigate('/login')
-
+        navigate('/login');
     }
 
     return (
@@ -68,28 +65,26 @@ function Header() {
             <AppBar position="static" color="primary" id="top_header">
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
-                        <AdbIcon sx={{display: {xs: 'none', md: 'flex'}, mr: 1}}/>
+                        <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                         <Typography
                             variant="h6"
                             noWrap
-                            component="a"
-                            href="/"
+                            component={Link}
+                            to="/"
                             sx={{
                                 mr: 2,
-                                display: {xs: 'none', md: 'flex'},
+                                display: { xs: 'none', md: 'flex' },
                                 fontFamily: 'monospace',
                                 fontWeight: 700,
                                 letterSpacing: '.3rem',
                                 color: 'inherit',
                                 textDecoration: 'none',
                             }}
-                            as={Link}
-                            to="/"
                         >
                             NewsP
                         </Typography>
 
-                        <Box sx={{flexGrow: 1, display: {xs: 'flex', md: 'none'}}}>
+                        <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                             <IconButton
                                 size="large"
                                 aria-label="account of current user"
@@ -98,7 +93,7 @@ function Header() {
                                 onClick={handleOpenNavMenu}
                                 color="inherit"
                             >
-                                <MenuIcon/>
+                                <MenuIcon />
                             </IconButton>
                             <Menu
                                 id="menu-appbar"
@@ -115,22 +110,21 @@ function Header() {
                                 open={Boolean(anchorElNav)}
                                 onClose={handleCloseNavMenu}
                                 sx={{
-                                    display: {xs: 'block', md: 'none'},
+                                    display: { xs: 'block', md: 'none' },
                                 }}
                             >
-
-
+                                {/* Add Menu items here */}
                             </Menu>
                         </Box>
-                        <AdbIcon sx={{display: {xs: 'flex', md: 'none'}, mr: 1}}/>
+                        <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                         <Typography
                             variant="h5"
                             noWrap
-                            component="a"
-                            href=""
+                            component={Link}
+                            to="/"
                             sx={{
                                 mr: 2,
-                                display: {xs: 'flex', md: 'none'},
+                                display: { xs: 'flex', md: 'none' },
                                 flexGrow: 1,
                                 fontFamily: 'monospace',
                                 fontWeight: 700,
@@ -138,30 +132,27 @@ function Header() {
                                 color: 'inherit',
                                 textDecoration: 'none',
                             }}
-                            as={Link}
-                            to="/"
                         >
                             LOGO
                         </Typography>
                         {!isAuthenticated ?
-                            <Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}, flexDirection: 'row-reverse'}}>
-                                <MenuItem key="register" as={Link} to="/register">
+                            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, flexDirection: 'row-reverse' }}>
+                                <MenuItem key="register" component={Link} to="/register">
                                     <Typography textAlign="center">Register</Typography>
                                 </MenuItem>
-                                <MenuItem key="login" as={Link} to="/login">
+                                <MenuItem key="login" component={Link} to="/login">
                                     <Typography textAlign="center">Login</Typography>
                                 </MenuItem>
                             </Box>
                             :
-                            <Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}, flexDirection: 'row-reverse'}}>
-
+                            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, flexDirection: 'row-reverse' }}>
                                 <Tooltip title="Open settings">
-                                    <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>
-                                        <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg"/>
+                                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                        <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                                     </IconButton>
                                 </Tooltip>
                                 <Menu
-                                    sx={{mt: '45px'}}
+                                    sx={{ mt: '45px' }}
                                     id="menu-appbar"
                                     anchorEl={anchorElUser}
                                     anchorOrigin={{
@@ -177,7 +168,7 @@ function Header() {
                                     onClose={handleCloseUserMenu}
                                 >
                                     {settings.map((setting) => (
-                                        <MenuItem key={setting.name} as={Link} to={setting.route} onClick={handleCloseUserMenu}>
+                                        <MenuItem key={setting.name} component={Link} to={setting.route} onClick={handleCloseUserMenu}>
                                             <Typography textAlign="center">{setting.name}</Typography>
                                         </MenuItem>
                                     ))}
@@ -191,7 +182,7 @@ function Header() {
                 </Container>
             </AppBar>
         </ThemeProvider>
-    )
+    );
 }
 
 export default Header;

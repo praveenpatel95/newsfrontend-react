@@ -6,9 +6,7 @@ import Register from "../Containers/Auth/Register";
 import Profile from "../Containers/account/Profile";
 import Account from "../Containers/account";
 import NewsFeedSetting from "../Containers/account/NewsFeedSetting";
-
 import SearchNews from "../Containers/SearchNews";
-
 
 export default function MainRouter() {
     return (
@@ -23,7 +21,6 @@ export default function MainRouter() {
                     <Route path="profile" element={<Profile/>}/>
                     <Route path="newsfeed" element={<NewsFeedSetting/>}/>
                 </Route>
-
             </Route>
         </Routes>
     )
