@@ -25,7 +25,7 @@ const NewsAPIReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isNewsApiArticlesFetching: false,
-                newsAPIArticleError: action.payload,
+                newsAPIArticleError: action.error,
             };
 
         default:

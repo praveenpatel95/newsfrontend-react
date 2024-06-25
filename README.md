@@ -20,7 +20,7 @@ Then cd into the folder with this command:
 cd newsfrontend-react
 ```
 ## With Docker
-#### With docker-compose:
+#### With docker-compose: ####
 
 `docker-compose up`
 

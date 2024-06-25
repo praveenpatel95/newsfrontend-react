@@ -15,7 +15,13 @@ export function* fetchNewsApiArticles({payload}) {
             yield put(getNewsAPIArticlesSuccess(response?.data));
         }
     } catch (e) {
-        yield put(getNewsAPIArticlesFailure(e.message));
+       if (e.response && e.response.data && e.response.data.message) {
+            const errorMessage = e.response.data.message;
+            yield put(getNewsAPIArticlesFailure(errorMessage));
+        } else {
+            yield put(getNewsAPIArticlesFailure("An unknown error occurred"));
+        }
+
     }
 }
 export function* fetchNewsApiArticlesFlow() {
