@@ -19,12 +19,6 @@ Then cd into the folder with this command:
 ```
 cd newsfrontend-react
 ```
-
-Install node modules with below command:
-```
-npm install
-```
-
 ## With Docker
 #### With docker-compose:
 
@@ -35,10 +29,16 @@ npm install
 ```
 docker build -t newsfrontend-react .
 ```
+### Without docker  
+Install node modules with below command:
+```
+npm install
+```
 
-## Usage
+
+### Usage
 Open .env file and update the `REACT_APP_API_BASE_URL`
-<br> With your frontend API url.
+<br> With your backend API url.
 
 In the project directory, you can run:
 
